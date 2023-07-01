@@ -8,7 +8,12 @@ export default function Profile(props) {
     <div className={style.container}>
       <div className={style.profile}>
         <div className={style.description}>
-          <img src={avatar} alt="User avatar" className={style.avatar} />
+          {/* <img src={avatar} alt="User avatar" className={style.avatar} /> */}
+          {avatar ? (
+            <img src={avatar} alt="User avatar" className={style.avatar} />
+          ) : (
+            <div className={style.avatarPlaceholder} />
+          )}
           <p className={style.name}>{username}</p>
           <p className={style.tag}>@{tag}</p>
           <p className={style.location}>{location}</p>

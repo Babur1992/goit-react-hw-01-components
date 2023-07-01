@@ -1,11 +1,16 @@
 import PropTypes from 'prop-types';
 import style from './Transaction.module.css';
 
-export default function Transaction(id, type, amount, currency) {
+export default function Transaction() {
+  const transactionData = [
+    { type: 'Invoice', amount: 125, currency: 'USD' },
+    { type: 'Withdrawal', amount: 85, currency: 'USD' },
+  ];
+
   return (
     <table className={style.transactionHistory}>
       <thead>
-        <tr className={style.typeLict}>
+        <tr className={style.typeList}>
           <th className={style.type}>Type</th>
           <th className={style.type}>Amount</th>
           <th className={style.type}>Currency</th>
@@ -13,16 +18,19 @@ export default function Transaction(id, type, amount, currency) {
       </thead>
 
       <tbody className={style.body}>
-        <tr>
-          <td className={style.text}>Invoice</td>
-          <td>125</td>
-          <td>USD</td>
-        </tr>
-        <tr>
-          <td className={style.text}>Withdrawal</td>
-          <td>85</td>
-          <td>USD</td>
-        </tr>
+        {transactionData.length > 0 ? (
+          transactionData.map((transaction, index) => (
+            <tr key={index}>
+              <td className={style.text}>{transaction.type}</td>
+              <td>{transaction.amount}</td>
+              <td>{transaction.currency}</td>
+            </tr>
+          ))
+        ) : (
+          <tr>
+            <td colSpan="3">No transaction data available.</td>
+          </tr>
+        )}
       </tbody>
     </table>
   );

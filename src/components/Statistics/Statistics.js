@@ -4,8 +4,9 @@ import style from './Statistics.module.css';
 export default function Statistics({ title, stats }) {
   return (
     <section className={style.statistics}>
-      <h2 className={style.title}>Upload stats</h2>
+      {title && <h2 className={style.title}></h2>}
 
+      <h2 className={style.title}>Upload stats</h2>
       <ul className={style.statlist}>
         <li className={style.item}>
           <span className={style.label}>.docx</span>
@@ -28,8 +29,13 @@ export default function Statistics({ title, stats }) {
   );
 }
 
-
 Statistics.propTypes = {
   title: PropTypes.string,
-  stats: PropTypes.object,
+  stats: PropTypes.arrayOf(
+    PropTypes.exact({
+      id: PropTypes.string,
+      label: PropTypes.string,
+      percentage: PropTypes.number,
+    })
+  ),
 };
