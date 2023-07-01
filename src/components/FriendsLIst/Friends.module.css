@@ -1,0 +1,9 @@
+.list {
+  list-style-type: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 45px;
+  background-color: antiquewhite;
+ 
+}
